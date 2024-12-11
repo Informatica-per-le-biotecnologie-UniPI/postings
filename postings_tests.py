@@ -1,4 +1,4 @@
-from postings import posting, sequence_pair
+from postings import posting, sequence_pair, sequence_triple
 
 
 #############################################################################
@@ -68,6 +68,54 @@ results = [
 ]
 
 print(f"* Exercise 2 *******************************************")
+print(f"Input\tExpected output\t\tOutput")
+for inp, out, result  in zip(inputs, expected_outputs, results):
+    print(f"{inp}\t\t\t\t{out}\t\t{result}\t")
+print(f"********************************************************\n\n\n")
+
+#############################################################################
+# Esercizio 3 ###############################################################
+#############################################################################
+inputs = [
+    ("", "", "", ""),
+    ("", "C", "", ""),
+    ("", "", "C", ""),
+    ("A", "C", "", ""),
+    ("A", "A", "A", "AA"),
+    ("A", "A", "A", "AAA"),
+    ("A", "B", "C", "ABC"),
+    ("A", "C", "Z", "ABTCSAZ"),
+    ("A", "C", "Z", "ABTZCSA"),
+    ("C", "A", "Z", "ABTCSATZ"),
+    ("C", "A", "Z", "ZABTCSAT"),
+    ("G", "T", "Z", "ACGAGGTAZC"),
+    ("G", "T", "Z", "ACGZAGGTAC"),
+    ("G", "C", "Z", "ACGAGGTACZ"),
+    ("G", "C", "Z", "ACGAGZGTAC"),
+]
+expected_outputs = [
+    False,
+    False,
+    False,
+    False,
+    False,
+    True,
+    True,
+    True,
+    False,
+    True,
+    False,
+    True,
+    False,
+    True,
+    False,
+]
+results = [
+    sequence_triple(a, b, c, sequence)
+    for a, b, c, sequence in inputs
+]
+
+print(f"* Exercise 3 *******************************************")
 print(f"Input\tExpected output\t\tOutput")
 for inp, out, result  in zip(inputs, expected_outputs, results):
     print(f"{inp}\t\t\t\t{out}\t\t{result}\t")

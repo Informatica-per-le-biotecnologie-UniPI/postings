@@ -125,13 +125,13 @@ print(f"********************************************************\n\n\n")
 # Esercizio 4 ###############################################################
 #############################################################################
 inputs = [
-    ("", "C"), False,
-    ("C", ""), False,
-    ("ABC", "ABC"), True,
-    ("ACZ", "ABTCSAZCACZ"), True,
-    ("ACZ", "ABTCSAZCAZZC"), False,
-    ("GTZ", "ACGAGGTZAZC"), True,
-    ("GTZ", "ACGZAGZGTAC"), False,
+    ("", "C"),
+    ("C", ""),
+    ("ABC", "ABC"),
+    ("ACZ", "ABTCSAZCACZ"),
+    ("ACZ", "ABTCSAZCAZZC"),
+    ("GTZ", "ACGAGGTZAZC"),
+    ("GTZ", "ACGZAGZGTAC"),
 ]
 expected_outputs = [
     False,

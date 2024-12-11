@@ -1,4 +1,4 @@
-from postings import posting, sequence_pair, sequence_triple, is_in_sequence
+from postings import posting, sequence_pair, sequence_triple, is_in_sequence, is_in_sequence_m_to_n_times
 
 
 #############################################################################
@@ -145,6 +145,42 @@ expected_outputs = [
 results = [
     is_in_sequence(s, sequence)
     for s, sequence in inputs
+]
+
+print(f"* Exercise 4 *******************************************")
+print(f"Input\tExpected output\t\tOutput")
+for inp, out, result  in zip(inputs, expected_outputs, results):
+    print(f"{inp}\t\t\t\t{out}\t\t{result}\t")
+print(f"********************************************************\n\n\n")
+
+#############################################################################
+# Esercizio 5 ###############################################################
+#############################################################################
+inputs = [
+    ("", "C", 0, 1),
+    ("", "C", 1, 3),
+    ("C", "", 0, 1),
+    ("C", "", 1, 2),
+    ("ABC", "ABC", 1, 4),
+    ("ABC", "ABCABABABBC", 2, 3),
+    ("ABC", "ABCABABABABC", 2, 4),
+    ("ABC", "ABCABCABCABC", 2, 4),
+    ("ABC", "ABCABCABCABCABCABCABC", 2, 4),
+]
+expected_outputs = [
+    True,
+    False,
+    True,
+    False,
+    True,
+    False,
+    True,
+    False,
+    False,
+]
+results = [
+    is_in_sequence_m_to_n_times(s, sequence, m, n)
+    for s, sequence, m, n in inputs
 ]
 
 print(f"* Exercise 4 *******************************************")

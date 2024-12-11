@@ -77,14 +77,52 @@ def sequence_triple(start, middle, finish, sequence: Sequence) -> bool:
 
     return False
 
-def is_in_sequence(string: str, sequence: str) -> bool:
+def is_in_sequence(string: str, sequence: str, with_index: bool = False) -> bool:
     """La `string` e' in `sequence`?
 
     :param string: La stringa
     :param sequence: La sequenza
+    :param with_index: Restituisci anche gli indici?
     :return: True se presente, False altrimenti.
     """
     if string == "":
+        if with_index:
+            return False, None
+        else:
+            return False
+
+    if string in sequence:
+        if with_index:
+            return (True, sequence.index(string))
+        else:
+            return True
+
+    if with_index:
+        return False, None
+    else:
         return False
 
-    return string in sequence
+def is_in_sequence_m_to_n_times(string: str, sequence: str, m: int, n: int) -> bool:
+    """La `string` appare in `sequence` da `m` a `n` volte?
+
+    :param string:
+    :param sequence:
+    :param m: Numero minimo di occorrenze
+    :param n: Numero massimo di occorrenze (non incluso)
+    :return: True se presente tra `m` e `n` volte, False altrimenti.
+    """
+    counter = 0
+    last_start_index = 0
+    string_length = len(string)
+
+    while last_start_index is not None and last_start_index + string_length <= len(sequence):
+        # trovo la prossima occorrenza...
+        appears, last_start_index = is_in_sequence(string, sequence, with_index=True)
+        if appears:
+            sequence = sequence[last_start_index + 1:]
+            counter += 1
+
+        if counter > n:
+            return False
+
+    return m <= counter < n

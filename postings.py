@@ -76,3 +76,15 @@ def sequence_triple(start, middle, finish, sequence: Sequence) -> bool:
         return sequence_pair(middle, finish, sequence[occurrence_middle:], with_index=False)
 
     return False
+
+def is_in_sequence(string: str, sequence: str) -> bool:
+    """La `string` e' in `sequence`?
+
+    :param string: La stringa
+    :param sequence: La sequenza
+    :return: True se presente, False altrimenti.
+    """
+    if string == "":
+        return False
+
+    return string in sequence

@@ -1,4 +1,4 @@
-from postings import posting, sequence_pair, sequence_triple
+from postings import posting, sequence_pair, sequence_triple, is_in_sequence
 
 
 #############################################################################
@@ -116,6 +116,38 @@ results = [
 ]
 
 print(f"* Exercise 3 *******************************************")
+print(f"Input\tExpected output\t\tOutput")
+for inp, out, result  in zip(inputs, expected_outputs, results):
+    print(f"{inp}\t\t\t\t{out}\t\t{result}\t")
+print(f"********************************************************\n\n\n")
+
+#############################################################################
+# Esercizio 4 ###############################################################
+#############################################################################
+inputs = [
+    ("", "C"), False,
+    ("C", ""), False,
+    ("ABC", "ABC"), True,
+    ("ACZ", "ABTCSAZCACZ"), True,
+    ("ACZ", "ABTCSAZCAZZC"), False,
+    ("GTZ", "ACGAGGTZAZC"), True,
+    ("GTZ", "ACGZAGZGTAC"), False,
+]
+expected_outputs = [
+    False,
+    False,
+    True,
+    True,
+    False,
+    True,
+    False
+]
+results = [
+    is_in_sequence(s, sequence)
+    for s, sequence in inputs
+]
+
+print(f"* Exercise 4 *******************************************")
 print(f"Input\tExpected output\t\tOutput")
 for inp, out, result  in zip(inputs, expected_outputs, results):
     print(f"{inp}\t\t\t\t{out}\t\t{result}\t")

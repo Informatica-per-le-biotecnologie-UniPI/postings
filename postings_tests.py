@@ -1,8 +1,12 @@
-from postings import posting
+from postings import posting, sequence_pair
 
+
+#############################################################################
+# Esercizio 1 ###############################################################
+#############################################################################
 
 inputs = [
-    [],
+    "",
     "A",
     "AA",
     "ACGAGGTAC",
@@ -27,4 +31,44 @@ print(f"* Exercise 1 *******************************************")
 print(f"Input\tExpected output\t\tOutput")
 for inp, out, result  in zip(inputs, expected_outputs, results):
     print(f"{inp}\t\t{out}\t\t{result}\t")
+print(f"********************************************************\n\n\n")
+
+
+#############################################################################
+# Esercizio 2 ###############################################################
+#############################################################################
+
+inputs = [
+    ("", "", ""),
+    ("", "C", ""),
+    ("", "", "C"),
+    ("A", "C", ""),
+    ("A", "A", "A"),
+    ("A", "C", "ABTCSA"),
+    ("C", "A", "ABTCSA"),
+    ("G", "T", "ACGAGGTAC"),
+    ("G", "C", "ACGAGGTAC"),
+    ("G", "X", "ACGAGGTAC"),
+]
+expected_outputs = [
+    False,
+    False,
+    False,
+    False,
+    False,
+    True,
+    True,
+    True,
+    True,
+    False
+]
+results = [
+    sequence_pair(a, b, sequence)
+    for a, b, sequence in inputs
+]
+
+print(f"* Exercise 2 *******************************************")
+print(f"Input\tExpected output\t\tOutput")
+for inp, out, result  in zip(inputs, expected_outputs, results):
+    print(f"{inp}\t\t\t\t{out}\t\t{result}\t")
 print(f"********************************************************\n\n\n")
